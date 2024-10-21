@@ -1,0 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_map_p2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/19 17:23:12 by mokariou          #+#    #+#             */
+/*   Updated: 2024/09/19 20:27:52 by mokariou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../so_long.h"
+
+void	place_empty(t_data *data, int i, int j)
+{
+    mlx_put_image_to_window(data->init, data->win,
+		data->img_empty, j * TILE_SIZE, i * TILE_SIZE);
+}
