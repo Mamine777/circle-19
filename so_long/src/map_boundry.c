@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_boundry.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 21:12:55 by mokariou          #+#    #+#             */
-/*   Updated: 2024/10/01 17:02:46 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:19:37 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,45 @@ static int	check_walls(t_data *data)
 	int	i;
 	int	j;
 
-	for (i = 0; i < data->map_widt; i++)
+	i = 0;
+	while (i < data->map_widt)
 	{
 		if (data->map[0][i] != '1' || data->map[data->map_heit - 1][i])
-		{
-			printf("YO brodie put the walls right\n");
-			return (1);
-		}
+			return (printf("YO brodie put the walls right\n"), 1);
+		i++;
 	}
-	for (j = 1; j < data->map_heit - 1; j++)
+	j = 1;
+	while (j < data->map_heit - 1)
 	{
 		if (data->map[j][0] != '1' || data->map[j][data->map_widt - 1] != '1')
-		{
-			printf("YO brodie put the walls right\n");
-			return (1);
-		}
+			return (printf("YO brodie put the walls right\n"), 1);
 	}
 	return (0);
 }
 
-static int	check_p_e_c(t_data *data)
+void	check_p_e_c2(t_data *data, int c_coin, int c_exit, int c_player)
 {
 	int	i;
 	int	j;
+
+	i = 0;
+	j = 0;
+	while (i++ < data->map_heit)
+	{
+		while (j++ < data->map_widt)
+		{
+			if (data->map[i][j] == 'P')
+				c_player++;
+			if (data->map[i][j] == 'E')
+				c_exit++;
+			if (data->map[i][j] == 'C')
+				c__coin++;
+		}
+	}
+}
+
+static int	check_p_e_c(t_data *data)
+{
 	int	count_player;
 	int	count_exit;
 	int	count_coin;
@@ -47,23 +63,9 @@ static int	check_p_e_c(t_data *data)
 	count_player = 0;
 	count_exit = 0;
 	count_coin = 0;
-	for (i = 0; i < data->map_heit; i++)
-	{
-		for (j = 0; j < data->map_widt; j++)
-		{
-			if (data->map[i][j] == 'P')
-				count_player++;
-			if (data->map[i][j] == 'E')
-				count_exit++;
-			if (data->map[i][j] == 'C')
-				count_coin++;
-		}
-	}
+	check_p_e_c2(data, count_coin, count_exit, count_player);
 	if (count_exit != 1 || count_player != 1 || count_coin == 0)
-	{
-		printf("YOO G, there is more than 1 player or 1 exit or no coins\n");
-		return (1);
-	}
+		return (printf("there is more than 1 player or 1 exit or no C\n"), 1);
 	return (0);
 }
 

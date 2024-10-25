@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map_p1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 20:44:42 by mokariou          #+#    #+#             */
-/*   Updated: 2024/09/19 23:21:02 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:13:03 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 static void	place_wall(t_data *data, int i, int j)
 {
-    mlx_put_image_to_window(data->init, data->win,
+	mlx_put_image_to_window(data->init, data->win,
 		data->img_bush, j * TILE_SIZE, i * TILE_SIZE);
 }
 
 static void	place_coin(t_data *data, int i, int j)
 {
-    mlx_put_image_to_window(data->init, data->win,
+	mlx_put_image_to_window(data->init, data->win,
 		data->img_coin, j * TILE_SIZE, i * TILE_SIZE);
 }
 
 void	place_player(t_data *data, int i, int j)
 {
-    mlx_put_image_to_window(data->init, data->win,
+	mlx_put_image_to_window(data->init, data->win,
 		data->img_player, j * TILE_SIZE, i * TILE_SIZE);
 }
 
@@ -36,7 +36,7 @@ void	place_exit(t_data *data, int i, int j)
 		data->img_exit, j * TILE_SIZE, i * TILE_SIZE);
 }
 
-
+/*I place the images in the right place*/
 void	read_map(t_data *data)
 {
 	int	i;

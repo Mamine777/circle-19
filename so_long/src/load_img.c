@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:25:57 by mokariou          #+#    #+#             */
-/*   Updated: 2024/09/19 23:21:43 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:12:46 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ void	load_img(t_data *data)
 			&data->widt_img, &data->heit_img);
 	data->img = mlx_xpm_file_to_image(data->init, "../img/npcback.xpm",
 			&data->widt_img, &data->heit_img);
-			
 }

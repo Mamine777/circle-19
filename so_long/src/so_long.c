@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:33:51 by mokariou          #+#    #+#             */
-/*   Updated: 2024/09/28 14:43:16 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:28:12 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	so_long(int fd, t_data *data, char *file)
 {
-	if (checkmap(fd) || check_angles(fd) || map_boundry(data))
+	if (checkmap(fd) || check_angles(fd))
 	{
 		printf("Error: Invalid map!\n");
 		close(fd);
@@ -22,15 +22,14 @@ void	so_long(int fd, t_data *data, char *file)
 	}
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
-		printf("Error: file not valid\n");
-		return(1);
-	}
+		return (printf("Error: file not valid\n"), 1);
 	init_map(fd, data);
+	if (map_boundry(data))
+		return (printf("Error: Invalid map!\n"), close(fd));
 	close(fd);
 	data->init = mlx_init();
 	data->win = mlx_new_window(data->init, data->map_widt * TILE_SIZE,
-					data->map_heit * TILE_SIZE, "So Long");
+			data->map_heit * TILE_SIZE, "pokemon slayer v90");
 	load_img(data);
 	read_map(data);
 	mlx_key_hook(data->win, ft_action, data);
@@ -48,7 +47,7 @@ int	main(int ac, char **av)
 	if (fd < 0)
 	{
 		printf("Error: file not valid\n");
-		return(1);
+		return (1);
 	}
 	so_long(fd, &data, av[1]);
 	return (0);

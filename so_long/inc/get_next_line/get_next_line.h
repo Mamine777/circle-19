@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 22:58:38 by mokariou          #+#    #+#             */
-/*   Updated: 2024/09/04 18:07:57 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:05:58 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # ifndef BUFFER_SIZE
 
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 1000000
 # endif
 
 # include <stdlib.h>
@@ -38,7 +38,7 @@ void	deallocate(t_stack *list, t_gnl *new_node, char *buffer);
 void	add_stack(t_stack *stack, char *buffer);
 char	*ft_strcpy(char *str, t_stack *stack);
 void	create(t_stack *list, int fd);
-char	*get_line(t_stack *stack);
+char	*get_da_line(t_stack *stack);
 void	next_call(t_stack *stack);
 char	*get_next_line(int fd);
 int		len_to_ln(t_stack *stack);

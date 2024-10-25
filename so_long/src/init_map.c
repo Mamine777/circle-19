@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 13:31:12 by mokariou          #+#    #+#             */
-/*   Updated: 2024/10/05 13:17:45 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:09:10 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
+/*count dimensions of the map: I calculate the width of the line and then 
+I set the hight of the map*/
 void	count_dimensions(int fd, t_data *data)
 {
 	char	*buffer;
@@ -32,6 +33,7 @@ void	count_dimensions(int fd, t_data *data)
 	}
 	free(buffer);
 }
+/*I locate memory of the map[width][height]*/
 
 void	locate_memory(t_data *data)
 {
@@ -55,6 +57,7 @@ void	locate_memory(t_data *data)
 		i++;
 	}
 }
+/* i fill the **map of tha data I read*/
 
 void	fill_map(int fd, t_data *data)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:51:46 by mokariou          #+#    #+#             */
-/*   Updated: 2024/09/04 15:28:31 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:28:34 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,26 +92,6 @@ void	deallocate(t_stack *list, t_gnl *new_node, char *buffer)
 	}
 }
 
-/*void	deallocate(t_stack *list, t_gnl *new_node, char *buffer)
-{
-	t_gnl	*temp;
-	while(list->top != NULL)
-	{
-		temp = list->top->next;
-		free(list->top->str);
-		free(list->top);
-		list->top = temp;
-	}
-	list = NULL;
-	if (new_node->str[0])
-		list = new_node;
-	else
-	{
-		free(buffer);
-		free(list);
-	}
-	list->size = new_node ? 1 : 0;
-}*/
 int	new_line(t_stack *stack)
 {
 	int		i;
