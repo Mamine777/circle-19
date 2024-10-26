@@ -6,7 +6,7 @@
 /*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:43:39 by mokariou          #+#    #+#             */
-/*   Updated: 2024/10/25 21:14:10 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:59:18 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	checkmap(int fd)
 	if (!buffer)
 		return (0);
 	width = ft_strlen(buffer);
-	while (buffer != NULL && buffer[0] != '\0')
+	while (buffer != NULL)
 	{
 		index = 0;
-		while (buffer[index] && buffer[width - 1] != '\n')
+		while (buffer[index] && buffer[index] != '\n')
 		{
 			if (buffer[width - 1] != '\n'&& check_character(buffer[index]) == 1)
 				return (free(buffer), close(fd), 1);
@@ -43,17 +43,19 @@ int	checkmap(int fd)
 		}
 		free(buffer);
 		buffer = get_next_line(fd);
+		if (buffer && buffer[0] == '\0')
+			return (free(buffer), close(fd), 0);
 	}
 	return (0);
 }
 
-/*#include <stdio.h>
+// #include <stdio.h>
 
-int	main(int ac, char **av)
-{
-	(void) ac;
-	int		fd;
+// int	main(int ac, char **av)
+// {
+// 	(void) ac;
+// 	int		fd;
 	
-	fd = open(av[1], O_RDONLY);
-	printf("%d", checkmap(fd));	
-}*/
+// 	fd = open(av[1], O_RDONLY);
+// 	printf("%d", checkmap(fd));	
+// }
