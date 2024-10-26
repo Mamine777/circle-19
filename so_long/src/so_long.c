@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:33:51 by mokariou          #+#    #+#             */
-/*   Updated: 2024/10/25 18:28:12 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/25 21:17:13 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	so_long(int fd, t_data *data, char *file)
 		close(fd);
 		exit(1);
 	}
+	close(fd);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (printf("Error: file not valid\n"), 1);

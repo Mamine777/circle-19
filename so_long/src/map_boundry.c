@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_boundry.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 21:12:55 by mokariou          #+#    #+#             */
-/*   Updated: 2024/10/25 18:19:37 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:02:11 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	check_walls(t_data *data)
 	i = 0;
 	while (i < data->map_widt)
 	{
-		if (data->map[0][i] != '1' || data->map[data->map_heit - 1][i])
+		if (data->map[0][i] != '1' || data->map[data->map_heit - 1][i] != 1)
 			return (printf("YO brodie put the walls right\n"), 1);
 		i++;
 	}
@@ -29,6 +29,7 @@ static int	check_walls(t_data *data)
 	{
 		if (data->map[j][0] != '1' || data->map[j][data->map_widt - 1] != '1')
 			return (printf("YO brodie put the walls right\n"), 1);
+		j++;
 	}
 	return (0);
 }
@@ -39,9 +40,9 @@ void	check_p_e_c2(t_data *data, int c_coin, int c_exit, int c_player)
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (i++ < data->map_heit)
+	while (i < data->map_heit)
 	{
+		j = 0;
 		while (j++ < data->map_widt)
 		{
 			if (data->map[i][j] == 'P')
@@ -49,8 +50,10 @@ void	check_p_e_c2(t_data *data, int c_coin, int c_exit, int c_player)
 			if (data->map[i][j] == 'E')
 				c_exit++;
 			if (data->map[i][j] == 'C')
-				c__coin++;
+				c_coin++;
+			j++;
 		}
+		i++;
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokariou <mokariou@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 13:31:12 by mokariou          #+#    #+#             */
-/*   Updated: 2024/10/25 12:09:10 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/25 21:11:00 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,12 @@ void	locate_memory(t_data *data)
 	while (i < data->map_heit)
 	{
 		data->map[i] = (char *)malloc(sizeof(char) * (data->map_widt + 1));
-		if (!data->map)
+		if (!data->map[i])
 		{
 			printf("memory allocation failed in init_map!\n");
+	        while (i > 0)
+				free(data->map[--i]);
+        	free(data->map);
 			exit(1);
 		}
 		i++;
@@ -70,6 +73,8 @@ void	fill_map(int fd, t_data *data)
 	i = 0;
 	while (buffer != NULL && buffer[0] != '\0')
 	{
+		if (ft_strlen(buffer) > data->map_widt)
+    		return (printf("Error: Buffer overflow detected\n"), 1);
 		ft_strlcpy(data->map[i], buffer, data->map_widt + 1);
 		i++;
 		free(buffer);

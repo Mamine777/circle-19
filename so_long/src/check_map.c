@@ -6,7 +6,7 @@
 /*   By: mokariou <mokariou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:43:39 by mokariou          #+#    #+#             */
-/*   Updated: 2024/10/05 14:17:57 by mokariou         ###   ########.fr       */
+/*   Updated: 2024/10/25 21:14:10 by mokariou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,8 @@ int	checkmap(int fd)
 		index = 0;
 		while (buffer[index] && buffer[width - 1] != '\n')
 		{
-			if (check_character(buffer[index]) == 1)
-			{
-				free(buffer);
-				close(fd);
-				return (1);
-			}
+			if (buffer[width - 1] != '\n'&& check_character(buffer[index]) == 1)
+				return (free(buffer), close(fd), 1);
 			index++;
 		}
 		free(buffer);
